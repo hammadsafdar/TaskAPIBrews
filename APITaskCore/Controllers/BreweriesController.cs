@@ -33,6 +33,10 @@ namespace APITaskCore.Controllers
         [HttpGet("{id}")]
         public ActionResult<Breweries> GetBreweryes(int id)
         {
+            if (id < 1 )
+            {
+                return NotFound();
+            }
             var brew = _repo.GetBrewByID(id);
 
             if (brew == null)
@@ -46,7 +50,7 @@ namespace APITaskCore.Controllers
         // PUT: Breweries/UpdateBreweryes/5
 
         [HttpPut("{id}")]
-        public ActionResult UpdateBreweryes(int id, Breweries breweryes)
+        public ActionResult PutBreweryes(int id, Breweries breweryes)
         {
             if (id != breweryes.BrewId)
             {
@@ -74,7 +78,7 @@ namespace APITaskCore.Controllers
 
         // POST: Breweries/CreateBreweryes
         [HttpPost]
-        public ActionResult CreateBreweryes(Breweries brew)
+        public ActionResult PostBreweryes(Breweries brew)
         {
             if (ModelState.IsValid)
             {

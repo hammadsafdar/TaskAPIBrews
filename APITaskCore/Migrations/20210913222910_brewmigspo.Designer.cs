@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace APITaskCore.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    [Migration("20210910224841_newmig")]
-    partial class newmig
+    [Migration("20210913222910_brewmigspo")]
+    partial class brewmigspo
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -23,9 +23,9 @@ namespace APITaskCore.Migrations
 
             modelBuilder.Entity("APITaskCore.Models.Breweries", b =>
                 {
-                    b.Property<long>("BrewId")
+                    b.Property<int>("BrewId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint")
+                        .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<double>("AverageRating")
@@ -88,8 +88,8 @@ namespace APITaskCore.Migrations
                     b.Property<int>("BrewId")
                         .HasColumnType("int");
 
-                    b.Property<long?>("BreweryBrewId")
-                        .HasColumnType("bigint");
+                    b.Property<int?>("BreweryBrewId")
+                        .HasColumnType("int");
 
                     b.Property<string>("CreatedBy")
                         .HasColumnType("nvarchar(max)");

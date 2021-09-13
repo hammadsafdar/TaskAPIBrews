@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace APITaskCore.Migrations
 {
-    public partial class newmig : Migration
+    public partial class brewmigspo : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -11,7 +11,7 @@ namespace APITaskCore.Migrations
                 name: "Breweries",
                 columns: table => new
                 {
-                    BrewId = table.Column<long>(nullable: false)
+                    BrewId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     BrewName = table.Column<string>(nullable: true),
                     BrewType = table.Column<string>(nullable: true),
@@ -46,7 +46,7 @@ namespace APITaskCore.Migrations
                     ModifiedBy = table.Column<string>(nullable: true),
                     ModifiedDate = table.Column<DateTime>(nullable: false),
                     BrewId = table.Column<int>(nullable: false),
-                    BreweryBrewId = table.Column<long>(nullable: true)
+                    BreweryBrewId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {

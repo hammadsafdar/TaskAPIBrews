@@ -9,7 +9,7 @@ namespace APITaskCore.Models
     public class Breweries
     {
         [Key]
-        public long BrewId { get; set; }
+        public int BrewId { get; set; }
         public string BrewName { get; set; }
         public string BrewType { get; set; }
         public string WebsiteURL { get; set; }

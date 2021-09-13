@@ -13,8 +13,7 @@ namespace APITaskCore.Repos
         private readonly ApplicationContext _db;
         
         bool isactivetrue = true;
-        //bool isactivefalse = false;
-
+        
         public BrewriesRepo(ApplicationContext context)
         {
             _db = context;
@@ -58,7 +57,7 @@ namespace APITaskCore.Repos
             _db.Ratings.Add(_rating);
             SaveChanges();
 
-            var totalSum = _db.Ratings.Where(r => r.BrewId == BrewID).Sum(s=>s.RatingId);
+            var totalSum = _db.Ratings.Where(r => r.BrewId == BrewID).Sum(s=>s.AllRatings);
             var count = _db.Ratings.Where(c => c.BrewId == BrewID).Count();
 
             double AveTotal = totalSum / count;
@@ -119,6 +118,22 @@ namespace APITaskCore.Repos
 
         public void UpdateBrew(int BrewID, Breweries Brew)
         {
+            DateTime DateTime = DateTime.Now;
+            string LoggedInnUser = "Logged Inn User";
+
+            var totalSum = _db.Ratings.Where(r => r.BrewId == BrewID).Sum(s=>s.AllRatings);
+            var count = _db.Ratings.Where(c => c.BrewId == BrewID).Count();
+            double AveTotal = totalSum / count;
+            if (AveTotal > 0.00)
+            {
+                Brew.AverageRating = AveTotal;
+            }
+            Brew.AverageRating = 0.00;
+            Brew.IsActive = true;
+            Brew.CreatedBy = LoggedInnUser;
+            Brew.CreatedDate = DateTime;
+            Brew.ModifiedBy = LoggedInnUser;
+            Brew.ModifiedDate = DateTime;
             _db.Entry(Brew).State = EntityState.Modified;
         }
 
