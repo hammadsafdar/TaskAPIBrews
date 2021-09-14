@@ -128,7 +128,11 @@ namespace APITaskCore.Repos
             {
                 Brew.AverageRating = AveTotal;
             }
-            Brew.AverageRating = 0.00;
+            else
+            {
+                Brew.AverageRating = 0.00;
+            }
+            
             Brew.IsActive = true;
             Brew.CreatedBy = LoggedInnUser;
             Brew.CreatedDate = DateTime;
