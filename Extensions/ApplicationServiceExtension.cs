@@ -22,21 +22,10 @@ namespace BrewTask.Extensions
 
             services.AddCors();
 
-            //services.AddDbContext<AppDbContext>(options =>
-            //options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
+            services.AddDbContext<AppDbContext>(options =>
+            options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
 
-            services.AddDbContext<AppDbContext>(
-                o =>
-                {
-                    o.UseNpgsql(configuration.GetConnectionString("DefaultConnection"));
-                    o.UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking);
-                });
-
-           // services.AddControllers()
-           //.AddJsonOptions(options =>
-           //{
-           //    options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.Preserve;
-           //});
+            
 
 
             return services;
